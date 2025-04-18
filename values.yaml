@@ -1,0 +1,7 @@
+persistence:
+  enabled: false    # Wyłączamy użycie EBS
+
+storageClass:
+  create: true      # Provisioner utworzy nową StorageClass automatycznie
+  name: nfs-sc      # Nazwa StorageClass, którą potem użyje w PVC 
+  defaultClass: false # Nie ustawiam tego StorageClass jako domyślnego w klastrze

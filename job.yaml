@@ -1,0 +1,22 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: upload-content-job   # I name the Job "upload-content-job"
+  namespace: nfs             # I place the Job in the "nfs" namespace
+spec:
+  template:
+    spec:
+      containers:
+      - name: uploader
+        image: busybox        # I use busybox to create a simple file
+        command: ["/bin/sh", "-c"]
+        args:
+          - echo '<h1>Hello from NFS!</h1>' > /data/index.html; sleep 10
+        volumeMounts:
+        - name: web-volume
+          mountPath: /data     # I mount PVC into /data
+      restartPolicy: OnFailure
+      volumes:
+      - name: web-volume
+        persistentVolumeClaim:
+          claimName: web-pvc   # I bind the volume to existing PVC "web-pvc"
