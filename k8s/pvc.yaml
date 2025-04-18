@@ -5,8 +5,8 @@ metadata:
   namespace: nfs
 spec:
   accessModes:
-    - ReadWriteMany       # NFS obsługuje równoczesny zapis z wielu podów
+    - ReadWriteMany # NFS supports simultaneous writes from multiple pods
   resources:
     requests:
       storage: 5Gi
-  storageClassName: nfs-sc  # musi zgadzać się z utworzoną StorageClass
+  storageClassName: nfs-sc  # must match the created StorageClass
