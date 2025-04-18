@@ -1,5 +1,5 @@
 
-# Large Scale Computing - LAB 07
+# Large Scale Computing - LAB 06
 
 ## Components and their Roles
 
