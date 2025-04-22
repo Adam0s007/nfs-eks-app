@@ -1,27 +1,27 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: web-server # I name the Deployment "web-server"
-  namespace: nfs # I place the Deployment in the "nfs" namespace
+  name: web-server
+  namespace: nfs
 spec:
-  replicas: 1 # I run only one replica of the pod
+  replicas: 1 
   selector:
     matchLabels:
-      app: web-server # I match pods with label "app: web-server"
+      app: web-server
   template:
     metadata:
       labels:
-        app: web-server # I label the pod as "app: web-server"
+        app: web-server
     spec:
       containers:
-      - name: nginx # I name the container "nginx"
-        image: nginx:alpine # I use a lightweight nginx image
+      - name: nginx 
+        image: nginx:alpine 
         ports:
-        - containerPort: 80 # I expose port 80 inside the container
+        - containerPort: 80 
         volumeMounts:
-        - name: web-content  # I mount a volume named "web-content"
-          mountPath: /usr/share/nginx/html # I mount it at nginx web root
+        - name: web-content  # mount a volume web-content
+          mountPath: /usr/share/nginx/html # mount it at nginx web root
       volumes:
       - name: web-content
         persistentVolumeClaim:
-          claimName: web-pvc # I bind the volume to the existing PVC "web-pvc"
+          claimName: web-pvc # bind the volume to the existing PVC web-pvc

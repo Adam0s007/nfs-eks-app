@@ -8,15 +8,15 @@ spec:
     spec:
       containers:
       - name: uploader
-        image: busybox # I use busybox to create a simple file
+        image: busybox 
         command: ["/bin/sh", "-c"]
         args:
           - echo '<h1>Hello from NFS!</h1>' > /data/index.html
         volumeMounts:
         - name: web-volume
-          mountPath: /data # I mount PVC into /data
+          mountPath: /data # mount PVC into /data
       restartPolicy: OnFailure
       volumes:
       - name: web-volume
         persistentVolumeClaim:
-          claimName: web-pvc # I bind the volume to existing PVC "web-pvc"
+          claimName: web-pvc # bind the volume to existing PVC web-pvc

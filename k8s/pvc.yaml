@@ -5,7 +5,7 @@ metadata:
   namespace: nfs
 spec:
   accessModes:
-    - ReadWriteMany # NFS supports simultaneous writes from multiple pods
+    - ReadWriteMany 
   resources:
     requests:
       storage: 5Gi
