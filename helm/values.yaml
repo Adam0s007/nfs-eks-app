@@ -1,7 +1,12 @@
-persistence:
-  enabled: false #We disable the use of EBS
-
 storageClass:
-  create: true # Provisioner will create a new StorageClass automatically
-  name: nfs-sc # The name of the StorageClass that will be used in the PVC later
-  defaultClass: false # I do not set this StorageClass as default in the cluster
+  create: true
+  name: nfs-sc
+  defaultClass: true
+nfs:
+  path: /export
+  mountOptions:
+    - vers=4.1
+    - noatime
+  persistentVolume:
+    enabled: true
+    size: 5Gi
